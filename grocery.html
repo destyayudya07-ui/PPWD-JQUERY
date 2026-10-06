@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Cute Shop</title>
+
+<style>
+:root{
+    --violet:#AF5AA7;
+    --groovy:#DF668D;
+    --pink:#F661AE;
+    --cream:#FDFEAF;
+    --sky:#C0E2FF;
+    --dark:#6F356A;
+    --white:#FFFFFF;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Trebuchet MS",Arial,sans-serif;
+    min-height:100vh;
+    color:var(--dark);
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.9),transparent 25%),
+        radial-gradient(circle at 90% 20%,rgba(246,97,174,.35),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(175,90,167,.25),transparent 35%),
+        linear-gradient(135deg,var(--sky),#fff,#ffd6ea,var(--sky));
+    background-attachment:fixed;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 25px;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    margin-bottom:30px;
+    position:relative;
+}
+
+.header:before{
+    content:"✦";
+    position:absolute;
+    left:8%;
+    top:0;
+    color:var(--pink);
+    font-size:40px;
+    transform:rotate(-15deg);
+}
+
+.header:after{
+    content:"♡";
+    position:absolute;
+    right:8%;
+    top:15px;
+    color:var(--groovy);
+    font-size:42px;
+    transform:rotate(15deg);
+}
+
+.small-title{
+    display:inline-block;
+    background:var(--cream);
+    color:var(--violet);
+    padding:8px 18px;
+    border:2px solid var(--violet);
+    border-radius:30px;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:3px;
+    box-shadow:4px 4px 0 var(--groovy);
+    transform:rotate(-2deg);
+}
+
+h1{
+    font-family:Georgia,serif;
+    font-size:52px;
+    color:var(--groovy);
+    margin:18px 0 8px;
+    text-shadow:3px 3px 0 var(--cream);
+}
+
+.header p{
+    font-size:16px;
+}
+
+/* STORE TOP */
+.store-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.6);
+    padding:12px 18px;
+    border:2px dashed var(--violet);
+    border-radius:18px;
+    margin-bottom:25px;
+}
+
+.shop-label{
+    font-weight:bold;
+    color:var(--violet);
+}
+
+.cart-count{
+    background:var(--pink);
+    color:white;
+    padding:10px 17px;
+    border-radius:20px;
+    font-weight:bold;
+    border:2px solid white;
+    box-shadow:3px 3px 0 var(--violet);
+}
+
+/* PRODUCTS */
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product{
+    background:rgba(255,255,255,.93);
+    border:3px solid white;
+    outline:2px solid var(--sky);
+    border-radius:20px;
+    padding:22px;
+    text-align:center;
+    box-shadow:6px 6px 0 rgba(175,90,167,.35);
+    transition:.25s;
+}
+
+.product:hover{
+    transform:translateY(-7px) rotate(-1deg);
+    box-shadow:9px 10px 0 rgba(175,90,167,.4);
+}
+
+.product-icon{
+    width:85px;
+    height:85px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--cream);
+    border:3px solid var(--pink);
+    border-radius:50%;
+    font-size:45px;
+    box-shadow:4px 4px 0 var(--groovy);
+}
+
+.product h2{
+    color:var(--violet);
+    font-family:Georgia,serif;
+    margin:15px 0 7px;
+    font-size:22px;
+}
+
+.product p{
+    color:#777;
+    margin-bottom:12px;
+}
+
+.price{
+    color:var(--groovy);
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+button{
+    border:2px solid white;
+    background:var(--violet);
+    color:white;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:3px 3px 0 var(--dark);
+    transition:.2s;
+}
+
+button:hover{
+    background:var(--groovy);
+    transform:translate(-2px,-2px);
+    box-shadow:5px 5px 0 var(--dark);
+}
+
+button:active{
+    transform:translate(2px,2px);
+    box-shadow:1px 1px 0 var(--dark);
+}
+
+.add-btn{
+    width:100%;
+}
+
+/* CART */
+.cart-box{
+    margin-top:30px;
+    background:linear-gradient(135deg,rgba(255,255,255,.95),var(--sky));
+    border:3px solid white;
+    outline:2px solid var(--violet);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:7px 7px 0 rgba(175,90,167,.35);
+}
+
+.cart-box h2{
+    color:var(--violet);
+    font-family:Georgia,serif;
+    margin-bottom:20px;
+}
+
+.empty{
+    text-align:center;
+    padding:25px;
+    background:rgba(253,254,175,.7);
+    border:2px dashed var(--groovy);
+    border-radius:15px;
+}
+
+.empty-icon{
+    font-size:45px;
+    margin-bottom:8px;
+}
+
+.empty h3{
+    color:var(--violet);
+    margin-bottom:5px;
+}
+
+.empty p{
+    color:#666;
+}
+
+/* CART ITEM */
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:15px 5px;
+    border-bottom:2px dashed rgba(175,90,167,.3);
+}
+
+.cart-name{
+    font-weight:bold;
+    color:var(--violet);
+}
+
+.cart-price{
+    color:var(--groovy);
+    font-weight:bold;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.qty button{
+    padding:5px 10px;
+    border-radius:8px;
+}
+
+.qty span{
+    min-width:25px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.delete{
+    background:#999;
+}
+
+/* TOTAL */
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:22px;
+    font-size:18px;
+}
+
+.total-price{
+    color:var(--groovy);
+    font-size:23px;
+    font-weight:bold;
+}
+
+.checkout{
+    background:var(--groovy);
+    margin-top:15px;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+    .container{
+        padding:30px 15px;
+    }
+
+    h1{
+        font-size:38px;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .store-top{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .cart-item{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cart-total{
+        flex-direction:column;
+        align-items:flex-end;
+        gap:10px;
+    }
+
+    .header:before{
+        left:2%;
+    }
+
+    .header:after{
+        right:2%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <span class="small-title">WELCOME TO MY SHOP</span>
+        <h1>Grocery ♡</h1>
+        <p>Fresh things for your everyday needs!</p>
+    </header>
+
+    <div class="store-top">
+        <div class="shop-label">🛒 Cute Grocery Store</div>
+        <div class="cart-count">
+            Cart: <span id="cartCount">0</span>
+        </div>
+    </div>
+
+    <section class="product-grid">
+
+        <div class="product">
+            <div class="product-icon">🍎</div>
+            <h2>Apple</h2>
+            <p>Fresh red apple</p>
+            <div class="price">Rp15.000</div>
+            <button class="add-btn" onclick="addToCart('Apple',15000)">
+                + Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🍌</div>
+            <h2>Banana</h2>
+            <p>Sweet fresh banana</p>
+            <div class="price">Rp12.000</div>
+            <button class="add-btn" onclick="addToCart('Banana',12000)">
+                + Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🍊</div>
+            <h2>Orange</h2>
+            <p>Juicy fresh orange</p>
+            <div class="price">Rp18.000</div>
+            <button class="add-btn" onclick="addToCart('Orange',18000)">
+                + Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🥛</div>
+            <h2>Milk</h2>
+            <p>Fresh dairy milk</p>
+            <div class="price">Rp20.000</div>
+            <button class="add-btn" onclick="addToCart('Milk',20000)">
+                + Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🍞</div>
+            <h2>Bread</h2>
+            <p>Soft fresh bread</p>
+            <div class="price">Rp17.000</div>
+            <button class="add-btn" onclick="addToCart('Bread',17000)">
+                + Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🥚</div>
+            <h2>Eggs</h2>
+            <p>Fresh chicken eggs</p>
+            <div class="price">Rp25.000</div>
+            <button class="add-btn" onclick="addToCart('Eggs',25000)">
+                + Add to Cart
+            </button>
+        </div>
+
+    </section>
+
+    <section class="cart-box">
+        <h2>🛍️ My Shopping Cart</h2>
+
+        <div id="cartContent">
+            <div class="empty">
+                <div class="empty-icon">🛒</div>
+                <h3>Your cart is empty</h3>
+                <p>Add some groceries to your cart!</p>
+            </div>
+        </div>
+
+        <div class="cart-total">
+            <div>
+                Total:
+                <span class="total-price" id="totalPrice">Rp0</span>
+            </div>
+
+            <button class="checkout" onclick="checkout()">
+                Checkout ♡
+            </button>
+        </div>
+    </section>
+
+</div>
+
+<script>
+let cart=[];
+
+function formatRupiah(number){
+    return "Rp"+number.toLocaleString("id-ID");
+}
+
+function addToCart(name,price){
+    let item=cart.find(product=>product.name===name);
+
+    if(item){
+        item.qty++;
+    }else{
+        cart.push({
+            name:name,
+            price:price,
+            qty:1
+        });
+    }
+
+    updateCart();
+}
+
+function changeQty(name,change){
+    let item=cart.find(product=>product.name===name);
+
+    if(!item) return;
+
+    item.qty+=change;
+
+    if(item.qty<=0){
+        cart=cart.filter(product=>product.name!==name);
+    }
+
+    updateCart();
+}
+
+function removeItem(name){
+    cart=cart.filter(product=>product.name!==name);
+    updateCart();
+}
+
+function updateCart(){
+
+    let cartContent=document.getElementById("cartContent");
+    let cartCount=document.getElementById("cartCount");
+    let totalPrice=document.getElementById("totalPrice");
+
+    let totalItems=0;
+    let total=0;
+
+    if(cart.length===0){
+
+        cartContent.innerHTML=`
+            <div class="empty">
+                <div class="empty-icon">🛒</div>
+                <h3>Your cart is empty</h3>
+                <p>Add some groceries to your cart!</p>
+            </div>
+        `;
+
+    }else{
+
+        cartContent.innerHTML="";
+
+        cart.forEach(item=>{
+
+            let subtotal=item.price*item.qty;
+
+            totalItems+=item.qty;
+            total+=subtotal;
+
+            cartContent.innerHTML+=`
+                <div class="cart-item">
+
+                    <div>
+                        <div class="cart-name">${item.name}</div>
+                        <div class="cart-price">
+                            ${formatRupiah(item.price)}
+                        </div>
+                    </div>
+
+                    <div class="qty">
+                        <button onclick="changeQty('${item.name}',-1)">
+                            −
+                        </button>
+
+                        <span>${item.qty}</span>
+
+                        <button onclick="changeQty('${item.name}',1)">
+                            +
+                        </button>
+
+                        <button class="delete"
+                            onclick="removeItem('${item.name}')">
+                            ✕
+                        </button>
+                    </div>
+
+                    <strong>
+                        ${formatRupiah(subtotal)}
+                    </strong>
+
+                </div>
+            `;
+        });
+    }
+
+    cartCount.textContent=totalItems;
+    totalPrice.textContent=formatRupiah(total);
+}
+
+function checkout(){
+
+    if(cart.length===0){
+        alert("Your cart is still empty!");
+        return;
+    }
+
+    let total=cart.reduce(
+        (sum,item)=>sum+(item.price*item.qty),0
+    );
+
+    alert(
+        "Thank you for shopping! ♡\n\n"+
+        "Total payment: "+formatRupiah(total)
+    );
+
+    cart=[];
+    updateCart();
+}
+
+updateCart();
+</script>
+
+</body>
+</html>
