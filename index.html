@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get to Know Me</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        :root {
+            --violet: #AF5AA7;
+            --groovy: #DF668D;
+            --pink: #F661AE;
+            --cream: #FDFEAF;
+            --sky: #C0E2FF;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--sky);
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .small-title {
+            color: var(--violet);
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+        .main-title {
+            font-size: 42px;
+            color: var(--groovy);
+            margin: 8px 0;
+        }
+        .subtitle {
+            color: #555;
+        }
+        .profile-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .profile-card,
+        .about-card,
+        .contact-card,
+        .store-card {
+            background: var(--pink);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .12);
+        }
+        .profile-card {
+            text-align: center;
+            transition: .3s;
+        }
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin: auto;
+        }
+        #profileName {
+            color: var(--cream);
+            margin-bottom: 5px;
+        }
+        #profileJob {
+            color: white;
+            margin-top: 0;
+        }
+        .info {
+            background: rgba(255,255,255,.2);
+            padding: 12px;
+            border-radius: 10px;
+            margin: 8px 0;
+            color: white;
+        }
+        .skill-list {
+            margin: 15px 0;
+        }
+        .skill {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--violet);
+            padding: 7px 12px;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .skill-input {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .about-card h2,
+        .contact-card h2,
+        .store-card h2 {
+            color: var(--cream);
+            margin-top: 0;
+        }
+        .about-card p {
+            color: white;
+            line-height: 1.6;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--violet);
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        button {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: var(--violet);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 4px;
+        }
+        button:hover {
+            opacity: .85;
+        }
+        .store-button {
+            background: var(--cream);
+            color: var(--violet);
+            font-size: 15px;
+            margin-top: 15px;
+        }
+        .contact-card {
+            margin-top: 20px;
+        }
+        .contact-card label {
+            display: block;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .contact-card input,
+        .contact-card textarea {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-family: Arial;
+        }
+        .contact-card textarea {
+            resize: vertical;
+        }
+        .error {
+            display: none;
+            color: #8b0000;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+        }
+        #successMessage {
+            display: none;
+            background: var(--cream);
+            color: var(--violet);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #storePage {
+            display: none;
+        }
+        .store-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .store-header h1 {
+            color: var(--groovy);
+            margin-bottom: 5px;
+        }
+        .store-header p {
+            color: #555;
+        }
+        .store-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .back-button {
+            background: var(--violet);
+        }
+        .cart-count {
+            background: var(--pink);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .product {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,.1);
+        }
+        .product-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+        .product h3 {
+            color: var(--violet);
+            margin: 8px 0;
+        }
+        .product p {
+            color: #666;
+            margin: 8px 0 15px;
+        }
+        .product-price {
+            color: var(--groovy);
+            font-weight: bold;
+        }
+        .product button {
+            width: 100%;
+        }
+        .cart-box {
+            margin-top: 25px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,.1);
+        }
+        .cart-box h2 {
+            color: var(--violet);
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 25px;
+            background: var(--sky);
+            border-radius: 12px;
+        }
+        .cart-empty .cart-icon {
+            font-size: 40px;
+        }
+        .cart-empty h3 {
+            color: var(--violet);
+            margin-bottom: 5px;
+        }
+        .cart-empty p {
+            color: #666;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item-info strong {
+            color: var(--violet);
+        }
+        .qty button {
+            padding: 5px 9px;
+            margin: 2px;
+        }
+        .cart-total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .cart-total strong {
+            color: var(--groovy);
+        }
+        .checkout-button {
+            background: var(--groovy);
+            font-size: 15px;
+        }
+        @media (max-width: 700px) {
+            .profile-area {
+                grid-template-columns: 1fr;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-title {
+                font-size: 32px;
+            }
+            .store-top {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="profilePage">
+        <div class="header">
+            <div class="small-title">
+                GET TO KNOW ME
+            </div>
+            <h1 class="main-title">
+                Hello, I'm Desty!
+            </h1>
+            <p class="subtitle">
+                Welcome to my little corner of the internet.
+            </p>
+        </div>
+        <div class="profile-area">
+            <div class="profile-card" id="profileCard">
+                <div class="avatar">
+                    👩🏻‍💻
+                </div>
+                <h2 id="profileName">
+                    Desty Ayudya
+                </h2>
+                <p id="profileJob">
+                    Front-End Developer
+                </p>
+                <div class="info">
+                    📍 Pontianak, Indonesia
+                </div>
+                <div class="info">
+                    ✉️ desty@example.com
+                </div>
+                <h3 style="color:#FDFEAF;">
+                    My Skills
+                </h3>
+                <div
+                    class="skill-list"
+                    id="skillList">
+                    <span class="skill">
+                        HTML
+                    </span>
+                    <span class="skill">
+                        CSS
+                    </span>
+                    <span class="skill">
+                        JavaScript
+                    </span>
+                </div>
+                <input
+                    type="text"
+                    id="skillInput"
+                    class="skill-input"
+                    placeholder="Tambah skill...">
+                <br>
+                <button id="btnTambahSkill">
+                    + Tambah Skill
+                </button>
+                <br>
+                <button id="btnUbahProfil">
+                    Ubah Profil
+                </button>
+                <button id="btnAnimasi">
+                    Efek Visual
+                </button>
+                <button id="btnReset">
+                    Reset
+                </button>
+            </div>
+            <div class="about-card">
+                <h2>
+                    About Me
+                </h2>
+                <p>
+                    Hai! Aku Desty. Aku tertarik dengan
+                    dunia web development, desain, dan
+                    teknologi.
+                </p>
+                <p>
+                    Aku senang belajar hal baru dan
+                    membuat tampilan website yang
+                    sederhana tetapi tetap menarik.
+                </p>
+                <div>
+                    <span class="tag">
+                        Web Development
+                    </span>
+                    <span class="tag">
+                        UI Design
+                    </span>
+                    <span class="tag">
+                        jQuery
+                    </span>
+                    <span class="tag">
+                        Creative
+                    </span>
+                </div>
+                <button
+                    class="store-button"
+                    id="btnKeToko">
+                    🛍️ Pindah ke Toko
+                </button>
+            </div>
+        </div>
+        <div class="contact-card">
+            <h2>
+                Contact Me
+            </h2>
+            <form id="contactForm">
+                <label>
+                    Nama
+                </label>
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama">
+                <div
+                    class="error"
+                    id="errNama">
+                    Nama minimal 3 karakter.
+                </div>
+                <label>
+                    Email
+                </label>
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="Masukkan email">
+                <div
+                    class="error"
+                    id="errEmail">
+                    Email tidak valid.
+                </div>
+                <label>
+                    Pesan
+                </label>
+                <textarea
+                    id="pesan"
+                    rows="4"
+                    placeholder="Tulis pesan...">
+                </textarea>
+                <div
+                    class="error"
+                    id="errPesan">
+                    Pesan minimal 10 karakter.
+                </div>
+                <button type="submit">
+                    Kirim Pesan
+                </button>
+                <button
+                    type="button"
+                    id="btnResetForm">
+                    Reset Form
+                </button>
+                <div id="successMessage">
+                    Pesan berhasil dikirim!
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="storePage">
+        <div class="store-header">
+            <div class="small-title">
+                SIMPLE GROCERY
+            </div>
+            <h1>
+                Fresh & Simple
+            </h1>
+            <p>
+                Pilih kebutuhan sehari-harimu.
+            </p>
+        </div>
+        <div class="store-top">
+            <button
+                class="back-button"
+                id="btnKembaliProfil">
+                ← Kembali ke Profil
+            </button>
+            <div class="cart-count">
+                🛒 Keranjang:
+                <span id="cartCount">
+                    0
+                </span>
+            </div>
+        </div>
+        <div class="product-grid">
+            <div class="product">
+                <div class="product-icon">
+                    🍎
+                </div>
+                <h3>
+                    Apple
+                </h3>
+                <p>
+                    Fresh red apple
+                </p>
+                <div class="product-price">
+                    Rp 15.000
+                </div>
+                <button
+                    class="btnTambahProduk"
+                    data-id="1"
+                    data-nama="Apple"
+                    data-harga="15000">
+                    + Keranjang
+                </button>
+            </div>
+            <div class="product">
+                <div class="product-icon">
+                    🥛
+                </div>
+                <h3>
+                    Milk
+                </h3>
+                <p>
+                    Fresh milk
+                </p>
+                <div class="product-price">
+                    Rp 18.000
+                </div>
+                <button
+                    class="btnTambahProduk"
+                    data-id="2"
+                    data-nama="Milk"
+                    data-harga="18000">
+                    + Keranjang
+                </button>
+            </div>
+            <div class="product">
+                <div class="product-icon">
+                    🍞
+                </div>
+                <h3>
+                    Bread
+                </h3>
+                <p>
+                    Soft fresh bread
+                </p>
+                <div class="product-price">
+                    Rp 20.000
+                </div>
+                <button
+                    class="btnTambahProduk"
+                    data-id="3"
+                    data-nama="Bread"
+                    data-harga="20000">
+                    + Keranjang
+                </button>
+            </div>
+            <div class="product">
+                <div class="product-icon">
+                    🥚
+                </div>
+                <h3>
+                    Eggs
+                </h3>
+                <p>
+                    Fresh eggs
+                </p>
+                <div class="product-price">
+                    Rp 25.000
+                </div>
+                <button
+                    class="btnTambahProduk"
+                    data-id="4"
+                    data-nama="Eggs"
+                    data-harga="25000">
+                    + Keranjang
+                </button>
+            </div>
+            <div class="product">
+                <div class="product-icon">
+                    🍚
+                </div>
+                <h3>
+                    Rice
+                </h3>
+                <p>
+                    Premium rice
+                </p>
+                <div class="product-price">
+                    Rp 60.000
+                </div>
+                <button
+                    class="btnTambahProduk"
+                    data-id="5"
+                    data-nama="Rice"
+                    data-harga="60000">
+                    + Keranjang
+                </button>
+            </div>
+            <div class="product">
+                <div class="product-icon">
+                    🥕
+                </div>
+                <h3>
+                    Carrot
+                </h3>
+                <p>
+                    Fresh carrot
+                </p>
+                <div class="product-price">
+                    Rp 12.000
+                </div>
+                <button
+                    class="btnTambahProduk"
+                    data-id="6"
+                    data-nama="Carrot"
+                    data-harga="12000">
+                    + Keranjang
+                </button>
+            </div>
+        </div>
+        <div class="cart-box">
+            <h2>
+                🛒 Keranjang Belanja
+            </h2>
+            <div id="cartItems">
+                <div class="cart-empty">
+                    <div class="cart-icon">
+                        🛒
+                    </div>
+                    <h3>
+                        Keranjang masih kosong
+                    </h3>
+                    <p>
+                        Yuk pilih kebutuhanmu!
+                    </p>
+                </div>
+            </div>
+            <div class="cart-total">
+                Total:
+                <strong id="cartTotal">
+                    Rp 0
+                </strong>
+                <br>
+                <button
+                    class="checkout-button"
+                    id="btnCheckout">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    
+    let cart = [];
+    
+    $('#btnKeToko').click(function() {
+        $('#profilePage').fadeOut(300, function() {
+            $('#storePage')
+                .fadeIn(400);
+        });
+        window.scrollTo(0, 0);
+    });
+    
+    $('#btnKembaliProfil').click(function() {
+        $('#storePage').fadeOut(300, function() {
+            $('#profilePage')
+                .fadeIn(400);
+        });
+        window.scrollTo(0, 0);
+    });
+    
+    $('#btnUbahProfil').click(function() {
+        $('#profileName')
+            .text('Desta Megantara')
+            .css('color', '#FDFEAF');
+        $('#profileJob')
+            .text('Web Developer & jQuery Enthusiast');
+    });
+    
+    $('#btnTambahSkill').click(function() {
+        let skill =
+            $('#skillInput')
+            .val()
+            .trim();
+        if (skill != '') {
+            $('#skillList').append(
+                '<span class="skill">' +
+                skill +
+                '</span>'
+            );
+            $('#skillInput').val('');
+        }
+    });
+   
+    $('#skillInput').keypress(function(e) {
+        if (e.which == 13) {
+            $('#btnTambahSkill').click();
+        }
+    });
+    
+    $('#btnAnimasi').click(function() {
+        $('#profileCard')
+            .fadeOut(300)
+            .fadeIn(600)
+            .slideUp(200)
+            .slideDown(300);
+    });
+    
+    $('#profileCard').hover(
+        function() {
+            $(this).css(
+                'transform',
+                'rotate(-1deg) scale(1.02)'
+            );
+        },
+        function() {
+            $(this).css(
+                'transform',
+                'rotate(0deg) scale(1)'
+            );
+        }
+    );
+    
+    $('#btnReset').click(function() {
+        $('#profileName')
+            .text('Desty Ayudya')
+            .css('color', '#FDFEAF');
+        $('#profileJob')
+            .text('Front-End Developer');
+        $('#skillList').html(
+            '<span class="skill">HTML</span>' +
+            '<span class="skill">CSS</span>' +
+            '<span class="skill">JavaScript</span>'
+        );
+        $('#skillInput').val('');
+    });
+   
+    $('#contactForm').submit(function(e) {
+        e.preventDefault();
+        let valid = true;
+        let nama =
+            $('#nama')
+            .val()
+            .trim();
+        let email =
+            $('#email')
+            .val()
+            .trim();
+        let pesan =
+            $('#pesan')
+            .val()
+            .trim();
+        if (nama.length < 3) {
+            $('#errNama').show();
+            valid = false;
+        } else {
+            $('#errNama').hide();
+        }
+        if (
+            email.length < 5 ||
+            !email.includes('@')
+        ) {
+            $('#errEmail').show();
+            valid = false;
+        } else {
+            $('#errEmail').hide();
+        }
+        if (pesan.length < 10) {
+            $('#errPesan').show();
+            valid = false;
+        } else {
+            $('#errPesan').hide();
+        }
+        if (valid) {
+            $('#successMessage')
+                .fadeIn()
+                .delay(2000)
+                .fadeOut();
+            $('#contactForm')[0].reset();
+        }
+    });
+    // Reset form contact
+    $('#btnResetForm').click(function() {
+        $('.error').hide();
+        $('#successMessage').hide();
+    });
+    
+    $('.btnTambahProduk').click(function() {
+        let id =
+            $(this).data('id');
+        let nama =
+            $(this).data('nama');
+        let harga =
+            Number(
+                $(this).data('harga')
+            );
+        let produk =
+            cart.find(
+                item => item.id == id
+            );
+        if (produk) {
+            produk.qty++;
+        } else {
+            cart.push({
+                id: id,
+                nama: nama,
+                harga: harga,
+                qty: 1
+            });
+        }
+        updateCart();
+    });
+    
+    function rupiah(angka) {
+        return 'Rp ' +
+            angka.toLocaleString('id-ID');
+    }
+   
+    function updateCart() {
+        $('#cartItems').empty();
+        
+        let jumlahBarang =
+            cart.reduce(
+                (total, item) =>
+                    total + item.qty,
+                0
+            );
+        $('#cartCount')
+            .text(jumlahBarang);
+       
+        if (cart.length === 0) {
+            $('#cartItems').html(`
+                <div class="cart-empty">
+                    <div class="cart-icon">
+                        🛒
+                    </div>
+                    <h3>
+                        Keranjang masih kosong
+                    </h3>
+                    <p>
+                        Yuk pilih kebutuhanmu!
+                    </p>
+                </div>
+            `);
+            $('#cartTotal')
+                .text('Rp 0');
+            return;
+        }
+       
+        cart.forEach(function(item) {
+            let subtotal =
+                item.harga * item.qty;
+            $('#cartItems').append(`
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <strong>
+                            ${item.nama}
+                        </strong>
+                        <br>
+                        ${rupiah(item.harga)}
+                    </div>
+                    <div class="qty">
+                        <button
+                            onclick="kurang(${item.id})">
+                            −
+                        </button>
+                        <span>
+                            ${item.qty}
+                        </span>
+                        <button
+                            onclick="tambah(${item.id})">
+                            +
+                        </button>
+                        <strong>
+                            ${rupiah(subtotal)}
+                        </strong>
+                    </div>
+                </div>
+            `);
+        });
+        
+        let total =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    (item.harga * item.qty),
+                0
+            );
+        $('#cartTotal')
+            .text(rupiah(total));
+    }
+    
+    function tambah(id) {
+        let produk =
+            cart.find(
+                item => item.id == id
+            );
+        if (produk) {
+            produk.qty++;
+        }
+        updateCart();
+    }
+   
+    function kurang(id) {
+        let produk =
+            cart.find(
+                item => item.id == id
+            );
+        if (produk) {
+            produk.qty--;
+            if (produk.qty <= 0) {
+                cart =
+                    cart.filter(
+                        item => item.id != id
+                    );
+            }
+        }
+        updateCart();
+    }
+   
+    $('#btnCheckout').click(function() {
+        if (cart.length === 0) {
+            alert(
+                'Keranjang masih kosong!'
+            );
+            return;
+        }
+        let total =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    (item.harga * item.qty),
+                0
+            );
+        alert(
+            'Checkout berhasil!\n\n' +
+            'Total belanja: ' +
+            rupiah(total) +
+            '\n\nTerima kasih sudah berbelanja!'
+        );
+        cart = [];
+        updateCart();
+    });
+    
+    $(document).ready(function() {
+        updateCart();
+    });
+</script>
+</body>
+</html>
