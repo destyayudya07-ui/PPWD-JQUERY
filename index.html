@@ -1,354 +1,61 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get to Know Me</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Portofolio Yan</title>
 
+ <!-- Menghubungkan file CSS -->
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <div id="profilePage">
 
-        <div class="header">
-            <div class="small-title">
-                GET TO KNOW ME
-            </div>
-            <h1 class="main-title">
-                Hello, I'm Desty!
-            </h1>
-            <p class="subtitle">
-                Welcome to my little corner of the internet.
-            </p>
-        </div>
-        <div class="profile-area">
-            <div class="profile-card" id="profileCard">
-                <div class="avatar">
-                    👩🏻‍💻
-                </div>
-                <h2 id="profileName">
-                    Desty Ayudya
-                </h2>
-                <p id="profileJob">
-                    UI/UX Designer
-                </p>
+ <!-- ===== Bagian atas ===== -->
+ <header class="header">
+  <h2 class="logo">Yan</h2>
+  <button id="tombol-tema">Mode gelap</button>
+ </header>
 
-                <div class="info">
-                    📍 Pontianak, Indonesia
-                </div>
-                <div class="info">
-                    ✉️ desty@gmail.com
-                </div>
-                <h3 style="color:#FDFEAF;">
-                    My Skills
-                </h3>
+ <main class="isi">
 
-                <div
-                    class="skill-list"
-                    id="skillList">
-                    <span class="skill">
-                        HTML
-                    </span>
-                    <span class="skill">
-                        CSS
-                    </span>
-                    <span class="skill">
-                        JavaScript
-                    </span>
+   <!-- ===== Perkenalan ===== -->
+   <section class="perkenalan">
+    <h1>Halo, saya Yan.</h1>
+    <p>Mahasiswa Sistem Informasi yang suka membuat aplikasi web.</p>
+   </section>
 
-                </div>
-                <input
-                    type="text"
-                    id="skillInput"
-                    class="skill-input"
-                    placeholder="Tambah skill...">
-                <br>
-                <button id="btnTambahSkill">
-                    + Tambah Skill
-                </button>
-                <br>
-                <button id="btnUbahProfil">
-                    Ubah Profil
-                </button>
-                <button id="btnAnimasi">
-                    Efek Visual
-                </button>
-                <button id="btnReset">
-                    Reset
-                </button>
-            </div>
-            <div class="about-card">
-                <h2>
-                    About Me
-                </h2>
-                <p>
-                    Hai, aku Desty! ✨
-                    Just a girl who loves art, design, and staying active. 
-                    Suka lukis, eksplor ide kreatif lewat desain, dan workout.
-                    Sekarang lagi seru-serunya belajar hal baru di dunia teknologi.
-                    Creating things, chasing progress, and enjoying the process!
-                </p>
+   <!-- ===== Daftar proyek ===== -->
+   <h2>Proyek saya</h2>
 
-                <div>
-                    <span class="tag">
-                        Web Development
-                    </span>
-                    <span class="tag">
-                        UI Design
-                    </span>
-                    <span class="tag">
-                        jQuery
-                    </span>
-                    <span class="tag">
-                        Creative
-                    </span>
-                </div>
-                <button
-                    class="store-button"
-                    id="btnKeToko">
-                    🛍️ Pindah ke Toko
-                </button>
-            </div>
-        </div>
-        <div class="contact-card">
-            <h2>
-                Contact Me
-            </h2>
+   <!-- Kotak pencarian (dipakai oleh script.js) -->
+   <input type="text" id="cari" placeholder="Cari proyek...">
 
-            <form id="contactForm" novalidate>
-                <label for="nama">Nama</label>
-                <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap">
+   <section class="daftar-proyek">
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Masukkan email aktif">
+    <!-- Satu kartu = satu proyek.
+       href mengarah ke index.html di dalam folder proyek tersebut. -->
 
-                <label for="hp">Nomor HP</label>
-                <input type="text" id="hp" name="hp" placeholder="Masukkan nomor HP">
+    <a class="kartu" href="buku-tamu-digital/index.html">
+      <h3>Buku Tamu Digital</h3>
+      <p>Formulir pencatatan tamu kantor.</p>
+    </a>
 
-                <label for="subjek">Subjek Pesan</label>
-                <select id="subjek" name="subjek">
-                    <option value="">-- Pilih subjek --</option>
-                    <option value="Pertanyaan">Pertanyaan</option>
-                    <option value="Kerja Sama">Kerja Sama</option>
-                    <option value="Saran">Saran</option>
-                </select>
+    <a class="kartu" href="mav-platform/index.html">
+      <h3>MAV Platform</h3>
+      <p>Menu berbeda untuk setiap peran pengguna.</p>
+    </a>
 
-                <label for="pesan">Pesan</label>
-                <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pesan minimal 10 karakter"></textarea>
+    <!-- Mau menambah proyek? Salin satu blok <a class="kartu"> di atas,
+        lalu ubah href, judul, dan deskripsinya. -->
 
-                <button type="submit">Kirim Pesan</button>
-                <button type="button" id="btnResetForm">Reset Form</button>
-                <div id="successMessage">Pesan berhasil dikirim!</div>
-            </form>
-        </div>
-    </div>
+   </section>
 
-    <div id="storePage">
-        <div class="store-header">
-            <div class="small-title">
-                GROCERY DEDES
-            </div>
+   <p id="pesan-kosong" class="pesan-kosong">Proyek tidak ditemukan.</p>
 
-            <h1>
-                Little Things, Daily Need
-            </h1>
+  </main>
 
-            <p>
-                Ayo cari kebutuhan sehari-harimu disini!
-            </p>
-        </div>
-
-        <div class="store-top">
-            <button
-                class="back-button"
-                id="btnKembaliProfil">
-                ← Kembali ke Profil
-            </button>
-            <div class="cart-count">
-                🛒 Keranjang:
-                <span id="cartCount">
-                    0
-                </span>
-            </div>
-        </div>
-
-        <div class="product-grid">
-            <div class="product">
-                <div class="product-icon">
-                    🍎
-                </div>
-                <h3>
-                    Apple
-                </h3>
-                <p>
-                    Fresh red apple
-                </p>
-                <div class="product-price">
-                    Rp 15.000
-                </div>
-
-                <button
-                    class="btnTambahProduk"
-                    data-id="1"
-                    data-nama="Apple"
-                    data-harga="15000">
-                    + Keranjang
-                </button>
-            </div>
-
-            <div class="product">
-                <div class="product-icon">
-                    🥛
-                </div>
-                <h3>
-                    Milk
-                </h3>
-                <p>
-                    Fresh milk
-                </p>
-
-                <div class="product-price">
-                    Rp 18.000
-                </div>
-
-                <button
-                    class="btnTambahProduk"
-                    data-id="2"
-                    data-nama="Milk"
-                    data-harga="18000">
-                    + Keranjang
-                </button>
-            </div>
-            <div class="product">
-                <div class="product-icon">
-                    🍞
-                </div>
-                <h3>
-                    Bread
-                </h3>
-                <p>
-                    Soft fresh bread
-                </p>
-
-                <div class="product-price">
-                    Rp 20.000
-                </div>
-                <button
-                    class="btnTambahProduk"
-                    data-id="3"
-                    data-nama="Bread"
-                    data-harga="20000">
-                    + Keranjang
-                </button>
-            </div>
-
-            <div class="product">
-                <div class="product-icon">
-                    🥚
-                </div>
-                <h3>
-                    Eggs
-                </h3>
-                <p>
-                    Fresh eggs
-                </p>
-
-                <div class="product-price">
-                    Rp 25.000
-                </div>
-
-                <button
-                    class="btnTambahProduk"
-                    data-id="4"
-                    data-nama="Eggs"
-                    data-harga="25000">
-                    + Keranjang
-                </button>
-            </div>
-            <div class="product">
-                <div class="product-icon">
-                    🍚
-                </div>
-                <h3>
-                    Rice
-                </h3>
-
-                <p>
-                    Premium rice
-                </p>
-
-                <div class="product-price">
-                    Rp 60.000
-                </div>
-
-                <button
-                    class="btnTambahProduk"
-                    data-id="5"
-                    data-nama="Rice"
-                    data-harga="60000">
-                    + Keranjang
-                </button>
-            </div>
-
-            <div class="product">
-                <div class="product-icon">
-                    🥕
-                </div>
-                <h3>
-                    Carrot
-                </h3>
-                <p>
-                    Fresh carrot
-                </p>
-                <div class="product-price">
-                    Rp 12.000
-                </div>
-                <button
-                    class="btnTambahProduk"
-                    data-id="6"
-                    data-nama="Carrot"
-                    data-harga="12000">
-                    + Keranjang
-                </button>
-            </div>
-        </div>
-        <div class="cart-box">
-            <h2>
-                🛒 Keranjang Belanja
-            </h2>
-            <div id="cartItems">
-                <div class="cart-empty">
-                    <div class="cart-icon">
-                        🛒
-                    </div>
-                    <h3>
-                        Keranjang mu masih kosong nih
-                    </h3>
-                    <p>
-                        Yuk pilih kebutuhanmu!
-                    </p>
-                </div>
-            </div>
-
-            <div class="cart-total">
-                Total:
-                <strong id="cartTotal">
-                    Rp 0
-                </strong>
-                <br>
-                <button
-                    class="checkout-button"
-                    id="btnCheckout">
-                    Checkout
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="script.js"></script>
+  <!-- Menghubungkan file JavaScript (letakkan paling bawah) -->
+  <script src="script.js"></script>
 </body>
 </html>
