@@ -1,164 +1,626 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desty Ayudya | My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #fe3781;
+            --soft-pink: #ff77ad;
+            --lime: #cef660;
+            --blue: #00b2d7;
+            --brown: #ad7659;
+            --cream: #fff4e8;
+            --text: #513c37;
+            --white: #fffdf9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+            transition: 0.3s;
+            background-image:
+                linear-gradient(90deg, rgba(173,118,89,.12) 2px, transparent 2px),
+                linear-gradient(rgba(173,118,89,.12) 2px, transparent 2px);
+            background-size: 75px 75px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--brown);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--pink);
+        }
+
+        .theme-btn {
+            background: var(--white);
+            border: 2px solid var(--brown);
+            color: var(--brown);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        /* MAIN */
+        .container {
+            width: 90%;
+            max-width: 1050px;
+            margin: 30px auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 45px 15px 35px;
+        }
+
+        .greeting,
+        .small-title {
+            color: var(--brown);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin: 18px 0;
+            color: var(--text);
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+        }
+
+        .description {
+            color: #886f63;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .decoration {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            font-size: 25px;
+            color: var(--pink);
+        }
+
+        /* PORTFOLIO PANEL */
+        .portfolio {
+            background: rgba(255, 253, 249, 0.88);
+            border: 3px dotted var(--brown);
+            border-radius: 30px;
+            padding: 35px;
+            margin-top: 15px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 25px;
+        }
+
+        .section-heading h2 {
+            font-size: 27px;
+            margin-top: 8px;
+        }
+
+        .section-heading h2 span {
+            color: var(--pink);
+        }
+
+        .project-count {
+            color: var(--brown);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            border: 2px solid #e7cbb7;
+            border-radius: 30px;
+            padding: 12px 20px;
+            margin-bottom: 30px;
+        }
+
+        .search-box span {
+            font-size: 27px;
+            color: var(--brown);
+        }
+
+        .search-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        /* PROJECT CARDS */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            min-height: 230px;
+            padding: 23px;
+            border-radius: 25px;
+            border: 5px solid rgba(255,255,255,.8);
+            text-decoration: none;
+            color: #573c36;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 7px 0 rgba(125, 78, 54, .12);
+            transition: .25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            width: 160%;
+            height: 65px;
+            background: rgba(255,255,255,.22);
+            transform: rotate(-15deg);
+            top: 30px;
+            left: -20%;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 13px 0 rgba(125, 78, 54, .12);
+        }
+
+        .pink {
+            background: linear-gradient(145deg, #ff91bd, #fe3781);
+        }
+
+        .green {
+            background: linear-gradient(145deg, #d8ff83, #91d52b);
+        }
+
+        .orange {
+            background: linear-gradient(145deg, #ffd75c, #ff8b25);
+        }
+
+        .blue {
+            background: linear-gradient(145deg, #8ce7f5, #37b8e4);
+        }
+
+        .card-top,
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .number {
+            background: rgba(255,255,255,.7);
+            padding: 5px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .card-icon {
+            font-size: 30px;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            margin: 18px 0;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .card-bottom {
+            border-top: 2px solid rgba(255,255,255,.6);
+            padding-top: 12px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .arrow {
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 17px;
+        }
+
+        /* EMPTY SEARCH */
+        .no-result {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            color: var(--brown);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 35px 10px;
+            color: var(--brown);
+            font-size: 13px;
+        }
+
+        footer span {
+            color: var(--pink);
+        }
+
+        .footer-small {
+            margin-top: 5px;
+            font-size: 11px;
+        }
+
+        /* DARK MODE */
+        body.dark {
+            --cream: #29232b;
+            --text: #fff0f5;
+            --white: #39313b;
+            --brown: #f2a4bf;
+
+            background-color: var(--cream);
+            background-image:
+                linear-gradient(90deg, rgba(255,255,255,.04) 2px, transparent 2px),
+                linear-gradient(rgba(255,255,255,.04) 2px, transparent 2px);
+        }
+
+        body.dark .portfolio {
+            background: rgba(57,49,59,.95);
+        }
+
+        body.dark .hero h1,
+        body.dark .section-heading h2 {
+            color: #fff0f5;
+        }
+
+        body.dark .description {
+            color: #d5bdca;
+        }
+
+        body.dark .search-box {
+            background: #443a46;
+            border-color: #745467;
+        }
+
+        body.dark .search-box input {
+            color: white;
+        }
+
+        body.dark .search-box input::placeholder {
+            color: #d0b6c5;
+        }
+
+        body.dark .theme-btn {
+            background: #39313b;
+            color: #ffb5d0;
+            border-color: #ff77ad;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 650px) {
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 15px;
+            }
+
+            .portfolio {
+                padding: 22px 16px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .section-heading h2 {
+                font-size: 23px;
+            }
+
+            .project-count {
+                font-size: 9px;
+            }
+
+            .hero {
+                padding-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
     <header class="navbar">
-      <a href="#" class="logo">Desty Ayudya<span>.</span></a>
-      <button id="themeToggle" class="theme-btn">Mode gelap ☾</button>
+        <a href="#" class="logo">Desty Ayudya<span>.</span></a>
+        <button id="themeToggle" class="theme-btn">
+            Mode gelap ☾
+        </button>
     </header>
 
     <main class="container">
-      <section class="hero">
-        <p class="greeting">WELCOME TO MY LITTLE SPACE</p>
-        <h1>Halo, saya <span>Desty Ayudya!</span></h1>
-        <p class="description">
-          Mahasiswa Sistem Informasi yang senang mengeksplorasi ide kreatif dan
-          membangun berbagai website.
-        </p>
 
-        <div class="decoration">
-          <span>✦</span>
-          <span>♡</span>
-          <span>✿</span>
-        </div>
-      </section>
+        <!-- HERO -->
+        <section class="hero">
+            <p class="greeting">WELCOME TO MY LITTLE SPACE</p>
 
-      <section class="portfolio">
-        <div class="section-heading">
-          <div>
-            <p class="small-title">MY CREATIVE SPACE</p>
-            <h2>Proyek Saya <span>♡</span></h2>
-          </div>
-          <p class="project-count">05 PROJECTS</p>
-        </div>
+            <h1>Halo, saya <span>Desty Ayudya!</span></h1>
 
-        <div class="search-box">
-          <span>⌕</span>
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Cari proyek impianmu..."
-          />
-        </div>
+            <p class="description">
+                Mahasiswa Sistem Informasi yang senang mengeksplorasi ide kreatif dan
+                membangun berbagai website.
+            </p>
 
-        <div class="project-grid" id="projectGrid">
-          <a
-            href="berita/portal_berita.html"
-            class="project-card pink"
-            data-name="portal berita"
-          >
-            <div class="card-top">
-              <span class="number">01</span>
-              <span class="card-icon">📰</span>
+            <div class="decoration">
+                <span>✦</span>
+                <span>♡</span>
+                <span>✿</span>
             </div>
-            <div class="card-content">
-              <h3>Portal Berita</h3>
-              <p>Website informasi dan berita dengan tampilan menarik.</p>
-            </div>
-            <div class="card-bottom">
-              <span>Explore project</span>
-              <span class="arrow">↗</span>
-            </div>
-          </a>
+        </section>
 
-          <a
-            href="Profile%20%26%20Grocery/index.html"
-            class="project-card green"
-            data-name="profile grocery"
-          >
-            <div class="card-top">
-              <span class="number">02</span>
-              <span class="card-icon">🛍️</span>
-            </div>
-            <div class="card-content">
-              <h3>Profile & Grocery</h3>
-              <p>Website profil dan grocery dengan fitur interaktif.</p>
-            </div>
-            <div class="card-bottom">
-              <span>Explore project</span>
-              <span class="arrow">↗</span>
-            </div>
-          </a>
+        <!-- PORTFOLIO -->
+        <section class="portfolio">
 
-          <a
-            href="profile%20interaktif/index.html"
-            class="project-card orange"
-            data-name="profile interaktif"
-          >
-            <div class="card-top">
-              <span class="number">03</span>
-              <span class="card-icon">👩🏻‍💻</span>
-            </div>
-            <div class="card-content">
-              <h3>Profile Interaktif</h3>
-              <p>Website personal dengan tampilan dan interaksi menarik.</p>
-            </div>
-            <div class="card-bottom">
-              <span>Explore project</span>
-              <span class="arrow">↗</span>
-            </div>
-          </a>
+            <div class="section-heading">
+                <div>
+                    <p class="small-title">MY CREATIVE SPACE</p>
+                    <h2>Proyek Saya <span>♡</span></h2>
+                </div>
 
-          <a
-            href="Warung%20Kopi%20Nusantara/index.html"
-            class="project-card blue"
-            data-name="warung kopi nusantara"
-          >
-            <div class="card-top">
-              <span class="number">04</span>
-              <span class="card-icon">☕</span>
-            </div>
-            <div class="card-content">
-              <h3>Warung Kopi Nusantara</h3>
-              <p>Website yang memperkenalkan produk kopi Nusantara.</p>
-            </div>
-            <div class="card-bottom">
-              <span>Explore project</span>
-              <span class="arrow">↗</span>
-            </div>
-          </a>
-
-          <!-- Project 05: Dashboard Admin -->
-          <a
-            href="./Dashboard_H1101251023_DestyAyudya/index.html"
-            class="project-card pink"
-            data-name="dashboard admin adminpanel"
-          >
-            >
-            <div class="card-top">
-              <span class="number">05</span>
-              <span class="card-icon">📊</span>
+                <p class="project-count">05 PROJECTS</p>
             </div>
 
-            <div class="card-content">
-              <h3>Dashboard Admin</h3>
-              <p>
-                Website dashboard admin dengan fitur pengelolaan data pengguna
-                dan ringkasan statistik.
-              </p>
+            <!-- SEARCH -->
+            <div class="search-box">
+                <span>⌕</span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari proyek impianmu..."
+                >
             </div>
 
-            <div class="card-bottom">
-              <span>Explore project</span>
-              <span class="arrow">↗</span>
+            <!-- PROJECT GRID -->
+            <div class="project-grid" id="projectGrid">
+
+                <!-- PROJECT 01 -->
+                <a
+                    href="berita/portal_berita.html"
+                    class="project-card pink"
+                    data-name="portal berita"
+                >
+                    <div class="card-top">
+                        <span class="number">01</span>
+                        <span class="card-icon">📰</span>
+                    </div>
+
+                    <div class="card-content">
+                        <h3>Portal Berita</h3>
+                        <p>
+                            Website informasi dan berita dengan tampilan menarik.
+                        </p>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>Explore project</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT 02 -->
+                <a
+                    href="Profile%20%26%20Grocery/index.html"
+                    class="project-card green"
+                    data-name="profile grocery"
+                >
+                    <div class="card-top">
+                        <span class="number">02</span>
+                        <span class="card-icon">🛍️</span>
+                    </div>
+
+                    <div class="card-content">
+                        <h3>Profile & Grocery</h3>
+                        <p>
+                            Website profil dan grocery dengan fitur interaktif.
+                        </p>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>Explore project</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT 03 -->
+                <a
+                    href="profile%20interaktif/index.html"
+                    class="project-card orange"
+                    data-name="profile interaktif"
+                >
+                    <div class="card-top">
+                        <span class="number">03</span>
+                        <span class="card-icon">👩🏻‍💻</span>
+                    </div>
+
+                    <div class="card-content">
+                        <h3>Profile Interaktif</h3>
+                        <p>
+                            Website personal dengan tampilan dan interaksi menarik.
+                        </p>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>Explore project</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT 04 -->
+                <a
+                    href="Warung%20Kopi%20Nusantara/index.html"
+                    class="project-card blue"
+                    data-name="warung kopi nusantara"
+                >
+                    <div class="card-top">
+                        <span class="number">04</span>
+                        <span class="card-icon">☕</span>
+                    </div>
+
+                    <div class="card-content">
+                        <h3>Warung Kopi Nusantara</h3>
+                        <p>
+                            Website yang memperkenalkan produk kopi Nusantara.
+                        </p>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>Explore project</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </a>
+
+                <!-- PROJECT 05 -->
+                <a
+                    href="./Dashboard_H1101251023_DestyAyudya/index.html"
+                    class="project-card pink"
+                    data-name="dashboard admin adminpanel"
+                >
+                    <div class="card-top">
+                        <span class="number">05</span>
+                        <span class="card-icon">📊</span>
+                    </div>
+
+                    <div class="card-content">
+                        <h3>Dashboard Admin</h3>
+                        <p>
+                            Website dashboard admin dengan fitur pengelolaan
+                            data pengguna dan ringkasan statistik.
+                        </p>
+                    </div>
+
+                    <div class="card-bottom">
+                        <span>Explore project</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </a>
+
             </div>
-          </a>
-        </div>
 
-        <p id="noResult" class="no-result">Ups! Proyek tidak ditemukan ♡</p>
-      </section>
+            <p id="noResult" class="no-result">
+                Ups! Proyek tidak ditemukan ♡
+            </p>
 
-      <footer>
-        <p>Made with <span>♥</span> by Desty Ayudya</p>
-        <p class="footer-small">© 2026 My Personal Portfolio</p>
-      </footer>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>Made with <span>♥</span> by Desty Ayudya</p>
+            <p class="footer-small">© 2026 My Personal Portfolio</p>
+        </footer>
+
     </main>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- JAVASCRIPT -->
+    <script>
+        // SEARCH PROJECT
+        const searchInput = document.getElementById("searchInput");
+        const projectCards = document.querySelectorAll(".project-card");
+        const noResult = document.getElementById("noResult");
+
+        searchInput.addEventListener("input", function () {
+            const keyword = this.value.toLowerCase().trim();
+            let found = 0;
+
+            projectCards.forEach(function (card) {
+                const name = card.dataset.name.toLowerCase();
+
+                if (name.includes(keyword)) {
+                    card.style.display = "flex";
+                    found++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            noResult.style.display = found === 0 ? "block" : "none";
+        });
+
+        // DARK MODE
+        const themeToggle = document.getElementById("themeToggle");
+
+        themeToggle.addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                themeToggle.textContent = "Mode terang ☀";
+            } else {
+                themeToggle.textContent = "Mode gelap ☾";
+            }
+        });
+    </script>
+
+</body>
 </html>
