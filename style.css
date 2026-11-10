@@ -1,134 +1,386 @@
 
-/* ===== 1. Warna =====
-   Variabel CSS: ubah warna cukup di sini saja. */
-
-:root {
-   --latar: #eef3f1;
-   --kartu: #ffffff;
-   --teks: #1c2b27;
-   --teks-pudar: #5f726c;
-   --aksen: #0f766e;
-}
-
-/* Saat body diberi class "gelap" oleh JavaScript, warna berganti */
-
-body.gelap {
-   --latar: #121a18;
-   --kartu: #1b2623;
-   --teks: #e6efec;
-   --teks-pudar: #94a8a1;
-   --aksen: #5fd1c4;
-}
-
-/* ===== 2. Dasar halaman ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Pacifico&display=swap');
 
 * {
-   box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #fe3781;
+    --soft-pink: #ff77ad;
+    --lime: #cef660;
+    --blue: #00b2d7;
+    --brown: #ad7659;
+    --cream: #fff4e8;
+    --text: #513c37;
+    --white: #fffdf9;
 }
 
 body {
-   margin: 0;
-   font-family: Arial, sans-serif;
-   line-height: 1.6;
-   background: var(--latar);
-   color: var(--teks);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    transition: 0.3s;
+    background-image:
+        linear-gradient(90deg, rgba(173,118,89,.12) 2px, transparent 2px),
+        linear-gradient(rgba(173,118,89,.12) 2px, transparent 2px);
+    background-size: 75px 75px;
 }
 
-/* ===== 3. Bagian atas ===== */
+/* NAVBAR */
 
-.header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 16px 24px;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
 }
 
 .logo {
-   margin: 0;
-   color: var(--aksen);
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--brown);
+    text-decoration: none;
 }
 
-#tombol-tema {
-   padding: 8px 16px;
-   border: 2px solid var(--aksen);
-   border-radius: 20px;
-   background: transparent;
-   color: var(--aksen);
-   cursor: pointer;
+.logo span {
+    color: var(--pink);
 }
 
-/* ===== 4. Isi halaman ===== */
-
-.isi {
-   max-width: 900px;
-   margin: 0 auto;
-   padding: 0 24px 60px;
+.theme-btn {
+    background: var(--white);
+    border: 2px solid var(--brown);
+    color: var(--brown);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
 }
 
-.perkenalan {
-   padding: 50px 0 20px;
+/* MAIN */
+
+.container {
+    width: 90%;
+    max-width: 1050px;
+    margin: 30px auto;
 }
 
-.perkenalan h1 {
-   font-size: 2.6rem;
-   margin: 0 0 8px;
+.hero {
+    text-align: center;
+    padding: 45px 15px 35px;
 }
 
-.perkenalan p {
-   color: var(--teks-pudar);
-   font-size: 1.1rem;
-   margin: 0;
+.greeting,
+.small-title {
+    color: var(--brown);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
 }
 
-/* ===== 5. Pencarian ===== */
-
-#cari {
-   width: 100%;
-   padding: 12px 16px;
-   margin: 8px 0 20px;
-   border: 1px solid var(--teks-pudar);
-   border-radius: 10px;
-   font-size: 1rem;
-   background: var(--kartu);
-   color: var(--teks);
+.hero h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 18px 0;
+    color: var(--text);
 }
 
-/* ===== 6. Kartu proyek ===== */
-
-.daftar-proyek {
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-   gap: 20px;
+.hero h1 span {
+    color: var(--pink);
 }
 
-.kartu {
-   display: block;
-   padding: 24px;
-   background: var(--kartu);
-   border-radius: 14px;
-   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-   color: inherit;
-   text-decoration: none;
-   transition: transform 0.2s;
+.description {
+    color: #886f63;
+    font-size: 15px;
+    line-height: 1.8;
 }
 
-.kartu:hover {
-   transform: translateY(-4px);
+.decoration {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+    font-size: 25px;
+    color: var(--pink);
 }
 
-.kartu h3 {
-   margin: 0 0 6px;
-   color: var(--aksen);
+/* PORTFOLIO PANEL */
+
+.portfolio {
+    background: rgba(255, 253, 249, 0.88);
+    border: 3px dotted var(--brown);
+    border-radius: 30px;
+    padding: 35px;
+    margin-top: 15px;
 }
 
-.kartu p {
-   margin: 0;
-   color: var(--teks-pudar);
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 25px;
 }
 
-/* Pesan "tidak ditemukan" disembunyikan dulu */
+.section-heading h2 {
+    font-size: 27px;
+    margin-top: 8px;
+}
 
-.pesan-kosong {
-   display: none;
-   color: var(--teks-pudar);
+.section-heading h2 span {
+    color: var(--pink);
+}
+
+.project-count {
+    color: var(--brown);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border: 2px solid #e7cbb7;
+    border-radius: 30px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+}
+
+.search-box span {
+    font-size: 27px;
+    color: var(--brown);
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+}
+
+/* PROJECT CARDS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    min-height: 230px;
+    padding: 23px;
+    border-radius: 25px;
+    border: 5px solid rgba(255,255,255,.8);
+    text-decoration: none;
+    color: #573c36;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 7px 0 rgba(125, 78, 54, .12);
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    width: 160%;
+    height: 65px;
+    background: rgba(255,255,255,.22);
+    transform: rotate(-15deg);
+    top: 30px;
+    left: -20%;
+    pointer-events: none;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 13px 0 rgba(125, 78, 54, .12);
+}
+
+.pink {
+    background: linear-gradient(145deg, #ff91bd, #fe3781);
+}
+
+.green {
+    background: linear-gradient(145deg, #d8ff83, #91d52b);
+}
+
+.orange {
+    background: linear-gradient(145deg, #ffd75c, #ff8b25);
+}
+
+.blue {
+    background: linear-gradient(145deg, #8ce7f5, #37b8e4);
+}
+
+.card-top,
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.number {
+    background: rgba(255,255,255,.7);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.card-icon {
+    font-size: 30px;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    margin: 18px 0;
+}
+
+.card-content h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.card-bottom {
+    border-top: 2px solid rgba(255,255,255,.6);
+    padding-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.arrow {
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+}
+
+/* EMPTY SEARCH */
+
+.no-result {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    color: var(--brown);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 35px 10px;
+    color: var(--brown);
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--pink);
+}
+
+.footer-small {
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+/* DARK MODE */
+
+body.dark {
+    --cream: #29232b;
+    --text: #fff0f5;
+    --white: #39313b;
+    --brown: #f2a4bf;
+    background-color: var(--cream);
+    background-image:
+        linear-gradient(90deg, rgba(255,255,255,.04) 2px, transparent 2px),
+        linear-gradient(rgba(255,255,255,.04) 2px, transparent 2px);
+}
+
+body.dark .portfolio {
+    background: rgba(57,49,59,.95);
+}
+
+body.dark .hero h1,
+body.dark .section-heading h2 {
+    color: #fff0f5;
+}
+
+body.dark .description {
+    color: #d5bdca;
+}
+
+body.dark .search-box {
+    background: #443a46;
+    border-color: #745467;
+}
+
+body.dark .search-box input {
+    color: white;
+}
+
+body.dark .search-box input::placeholder {
+    color: #d0b6c5;
+}
+
+body.dark .theme-btn {
+    background: #39313b;
+    color: #ffb5d0;
+    border-color: #ff77ad;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .container {
+        width: 92%;
+        margin-top: 15px;
+    }
+
+    .portfolio {
+        padding: 22px 16px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+    .project-count {
+        font-size: 9px;
+    }
+
+    .hero {
+        padding-top: 30px;
+    }
 }

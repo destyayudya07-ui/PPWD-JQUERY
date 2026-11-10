@@ -1,61 +1,164 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Portofolio Yan</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desty Ayudya | My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="#" class="logo">Desty Ayudya<span>.</span></a>
+      <button id="themeToggle" class="theme-btn">Mode gelap ☾</button>
+    </header>
 
- <!-- Menghubungkan file CSS -->
- <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <main class="container">
+      <section class="hero">
+        <p class="greeting">WELCOME TO MY LITTLE SPACE</p>
+        <h1>Halo, saya <span>Desty Ayudya!</span></h1>
+        <p class="description">
+          Mahasiswa Sistem Informasi yang senang mengeksplorasi ide kreatif dan
+          membangun berbagai website.
+        </p>
 
- <!-- ===== Bagian atas ===== -->
- <header class="header">
-  <h2 class="logo">Yan</h2>
-  <button id="tombol-tema">Mode gelap</button>
- </header>
+        <div class="decoration">
+          <span>✦</span>
+          <span>♡</span>
+          <span>✿</span>
+        </div>
+      </section>
 
- <main class="isi">
+      <section class="portfolio">
+        <div class="section-heading">
+          <div>
+            <p class="small-title">MY CREATIVE SPACE</p>
+            <h2>Proyek Saya <span>♡</span></h2>
+          </div>
+          <p class="project-count">05 PROJECTS</p>
+        </div>
 
-   <!-- ===== Perkenalan ===== -->
-   <section class="perkenalan">
-    <h1>Halo, saya Yan.</h1>
-    <p>Mahasiswa Sistem Informasi yang suka membuat aplikasi web.</p>
-   </section>
+        <div class="search-box">
+          <span>⌕</span>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari proyek impianmu..."
+          />
+        </div>
 
-   <!-- ===== Daftar proyek ===== -->
-   <h2>Proyek saya</h2>
+        <div class="project-grid" id="projectGrid">
+          <a
+            href="berita/portal_berita.html"
+            class="project-card pink"
+            data-name="portal berita"
+          >
+            <div class="card-top">
+              <span class="number">01</span>
+              <span class="card-icon">📰</span>
+            </div>
+            <div class="card-content">
+              <h3>Portal Berita</h3>
+              <p>Website informasi dan berita dengan tampilan menarik.</p>
+            </div>
+            <div class="card-bottom">
+              <span>Explore project</span>
+              <span class="arrow">↗</span>
+            </div>
+          </a>
 
-   <!-- Kotak pencarian (dipakai oleh script.js) -->
-   <input type="text" id="cari" placeholder="Cari proyek...">
+          <a
+            href="Profile%20%26%20Grocery/index.html"
+            class="project-card green"
+            data-name="profile grocery"
+          >
+            <div class="card-top">
+              <span class="number">02</span>
+              <span class="card-icon">🛍️</span>
+            </div>
+            <div class="card-content">
+              <h3>Profile & Grocery</h3>
+              <p>Website profil dan grocery dengan fitur interaktif.</p>
+            </div>
+            <div class="card-bottom">
+              <span>Explore project</span>
+              <span class="arrow">↗</span>
+            </div>
+          </a>
 
-   <section class="daftar-proyek">
+          <a
+            href="profile%20interaktif/index.html"
+            class="project-card orange"
+            data-name="profile interaktif"
+          >
+            <div class="card-top">
+              <span class="number">03</span>
+              <span class="card-icon">👩🏻‍💻</span>
+            </div>
+            <div class="card-content">
+              <h3>Profile Interaktif</h3>
+              <p>Website personal dengan tampilan dan interaksi menarik.</p>
+            </div>
+            <div class="card-bottom">
+              <span>Explore project</span>
+              <span class="arrow">↗</span>
+            </div>
+          </a>
 
-    <!-- Satu kartu = satu proyek.
-       href mengarah ke index.html di dalam folder proyek tersebut. -->
+          <a
+            href="Warung%20Kopi%20Nusantara/index.html"
+            class="project-card blue"
+            data-name="warung kopi nusantara"
+          >
+            <div class="card-top">
+              <span class="number">04</span>
+              <span class="card-icon">☕</span>
+            </div>
+            <div class="card-content">
+              <h3>Warung Kopi Nusantara</h3>
+              <p>Website yang memperkenalkan produk kopi Nusantara.</p>
+            </div>
+            <div class="card-bottom">
+              <span>Explore project</span>
+              <span class="arrow">↗</span>
+            </div>
+          </a>
 
-    <a class="kartu" href="buku-tamu-digital/index.html">
-      <h3>Buku Tamu Digital</h3>
-      <p>Formulir pencatatan tamu kantor.</p>
-    </a>
+          <!-- Project 05: Dashboard Admin -->
+          <a
+            href="./Dashboard_H1101251023_DestyAyudya/index.html"
+            class="project-card pink"
+            data-name="dashboard admin adminpanel"
+          >
+            >
+            <div class="card-top">
+              <span class="number">05</span>
+              <span class="card-icon">📊</span>
+            </div>
 
-    <a class="kartu" href="mav-platform/index.html">
-      <h3>MAV Platform</h3>
-      <p>Menu berbeda untuk setiap peran pengguna.</p>
-    </a>
+            <div class="card-content">
+              <h3>Dashboard Admin</h3>
+              <p>
+                Website dashboard admin dengan fitur pengelolaan data pengguna
+                dan ringkasan statistik.
+              </p>
+            </div>
 
-    <!-- Mau menambah proyek? Salin satu blok <a class="kartu"> di atas,
-        lalu ubah href, judul, dan deskripsinya. -->
+            <div class="card-bottom">
+              <span>Explore project</span>
+              <span class="arrow">↗</span>
+            </div>
+          </a>
+        </div>
 
-   </section>
+        <p id="noResult" class="no-result">Ups! Proyek tidak ditemukan ♡</p>
+      </section>
 
-   <p id="pesan-kosong" class="pesan-kosong">Proyek tidak ditemukan.</p>
+      <footer>
+        <p>Made with <span>♥</span> by Desty Ayudya</p>
+        <p class="footer-small">© 2026 My Personal Portfolio</p>
+      </footer>
+    </main>
 
-  </main>
-
-  <!-- Menghubungkan file JavaScript (letakkan paling bawah) -->
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

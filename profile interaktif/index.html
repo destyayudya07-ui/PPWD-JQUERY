@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Get to Know Me - Desty Ayudya</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+
+            <div class="small-title">
+                get to
+            </div>
+
+            <div class="main-title">
+                know me
+            </div>
+
+            <div class="subtitle">
+                better &lt;3
+            </div>
+
+        </div>
+
+        <div class="profile-area">
+            <div class="profile-card" id="profileCard">
+
+                <div class="avatar">
+                    👩🏻‍💻
+                </div>
+
+                <h1 id="profileName">
+                    Desty Ayudya
+                </h1>
+
+                <p class="jabatan" id="profileJob">
+                    UI/UX Designer
+                </p>
+
+                <p class="info">
+                    📍 Edinburgh, Skotlandia
+                </p>
+
+                <p class="info">
+                    ✉️ nebula@gmail.com
+                </p>
+
+
+                <!-- SKILL -->
+                <div id="skillList">
+
+                    <span class="skill">
+                        HTML
+                    </span>
+
+                    <span class="skill">
+                        CSS
+                    </span>
+
+                    <span class="skill">
+                        JavaScript
+                    </span>
+
+                </div>
+
+
+                <!-- INPUT SKILL -->
+                <input
+                    type="text"
+                    id="skillInput"
+                    placeholder="Masukkan skill..."
+                >
+
+                <button id="btnTambahSkill">
+                    ✚ Tambah Skill
+                </button>
+
+
+                <!-- BUTTON -->
+                <div class="button-group">
+
+                    <button id="btnUbahProfil">
+                        ♡ Ubah Profil
+                    </button>
+
+                    <button id="btnAnimasi">
+                        ✦ Efek Visual
+                    </button>
+
+                    <button id="btnReset">
+                        ↻ Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ABOUT -->
+            <div class="about-card">
+
+                <div class="tags">
+
+                    <div class="tag">
+                        100% creative
+                    </div>
+
+                    <div class="tag">
+                        web enthusiast
+                    </div>
+
+                    <div class="tag">
+                        coding
+                    </div>
+
+                    <div class="tag">
+                        design
+                    </div>
+
+                    <div class="tag">
+                        music
+                    </div>
+
+                    <div class="tag">
+                        journaling
+                    </div>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <h3>
+                        things I like ♡
+                    </h3>
+
+                    <p>
+                        Painting 🎨
+                    </p>
+
+                    <p>
+                        Drawing ✏️
+                    </p>
+
+                    <p>
+                        Desain💻
+                    </p>
+
+                    <p>
+                        Journaling📝
+                    </p>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <h3>
+                        favorite things ✦
+                    </h3>
+
+                    <p>
+                        Matcha🍵
+                    </p>
+
+                    <p>
+                        Cat 🐱
+                    </p>
+
+                    <p>
+                        Music 🎵
+                    </p>
+
+                    <p>
+                        Pink 🩷
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-card">
+
+            <h2>
+                ♡ leave me a message
+            </h2>
+
+            <form id="contactForm">
+
+                <!-- NAMA -->
+                <label>
+                    Nama Anda
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama..."
+                >
+
+                <div class="error" id="errNama">
+                    Nama minimal 3 karakter.
+                </div>
+
+
+                <!-- EMAIL -->
+                <label>
+                    Email Anda
+                </label>
+
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="contoh@email.com"
+                >
+
+                <div class="error" id="errEmail">
+                    Email tidak valid.
+                </div>
+
+                <!-- PESAN -->
+                <label>
+                    Pesan
+                </label>
+
+                <textarea
+                    id="pesan"
+                    placeholder="Tulis pesan minimal 10 karakter..."
+                ></textarea>
+
+                <div class="error" id="errPesan">
+                    Pesan minimal 10 karakter.
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit">
+                    ♡ Kirim Pesan
+                </button>
+
+                <button
+                    type="reset"
+                    id="btnResetForm"
+                >
+                    ↻ Reset
+                </button>
+
+            </form>
+
+
+            <!-- SUCCESS MESSAGE -->
+            <div id="successMessage">
+                ✦ Pesan berhasil dikirim! Thank you ♡
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <div class="decoration">
+            ★ ♡ ★ ♡ ★
+        </div>
+
+        <div class="footer-text">
+            made with ♡ & jQuery
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

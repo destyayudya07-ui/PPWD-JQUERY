@@ -1,0 +1,339 @@
+:root {
+    --violet: #AF5AA7;
+    --groovy: #DF668D;
+    --pink: #F661AE;
+    --cream: #FDFEAF;
+    --sky: #C0E2FF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 15px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: var(--violet);
+    background: linear-gradient(135deg, var(--sky), var(--cream), var(--pink), var(--groovy), var(--violet));
+    min-height: 100vh;
+}
+
+body::before {
+    content: "★  ★  ★  ★  ★  ★  ★  ★  ★  ★";
+    display: block;
+    padding: 8px;
+    text-align: center;
+    color: var(--cream);
+    font-size: 22px;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px var(--violet);
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 25px;
+    background: var(--groovy);
+    border: 5px solid var(--cream);
+    border-radius: 30px;
+    box-shadow: 8px 8px var(--violet);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.small-title {
+    display: inline-block;
+    padding: 5px 18px;
+    background: var(--cream);
+    color: var(--violet);
+    border-radius: 12px;
+    font: bold 20px Georgia, serif;
+    transform: rotate(-2deg);
+    box-shadow: 3px 3px var(--violet);
+}
+
+.main-title {
+    margin: 10px 0 5px;
+    color: var(--cream);
+    font: 58px/0.9 Georgia, serif;
+    -webkit-text-stroke: 3px var(--violet);
+    text-shadow: 5px 5px var(--sky), 8px 8px var(--violet);
+}
+
+.subtitle {
+    display: inline-block;
+    padding: 7px 20px;
+    background: var(--sky);
+    color: var(--violet);
+    border: 3px solid var(--cream);
+    border-radius: 10px;
+    font: bold 16px Georgia, serif;
+    transform: rotate(1deg);
+}
+
+.profile-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.profile-card {
+    padding: 25px;
+    background: var(--violet);
+    color: var(--cream);
+    text-align: center;
+    border: 4px dashed var(--cream);
+    border-radius: 30px;
+    box-shadow: 5px 5px var(--pink);
+    transition: .3s;
+}
+
+.avatar {
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sky);
+    border: 7px solid var(--cream);
+    border-radius: 50%;
+    font-size: 85px;
+    box-shadow: 0 0 0 5px var(--pink);
+}
+
+#profileName {
+    margin: 10px 0;
+    color: var(--cream);
+    font: 32px Georgia, serif;
+    text-shadow: 2px 2px var(--pink);
+}
+
+.jabatan {
+    color: var(--sky);
+    font-weight: bold;
+}
+
+.info {
+    margin: 8px 0;
+    color: var(--cream);
+    font-size: 14px;
+}
+
+.about-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.tag {
+    padding: 9px 12px;
+    background: var(--sky);
+    color: var(--violet);
+    border: 3px solid var(--cream);
+    border-radius: 20px;
+    text-align: center;
+    font: bold 15px Georgia, serif;
+    box-shadow: 3px 3px var(--violet);
+}
+
+.tag:hover {
+    transform: translateY(-3px) rotate(-2deg);
+    background: var(--cream);
+}
+
+.mini-card {
+    padding: 18px;
+    background: var(--cream);
+    border: 3px solid var(--sky);
+    border-radius: 18px;
+    box-shadow: 4px 4px var(--violet);
+}
+
+.mini-card h3 {
+    margin: 0 0 10px;
+    color: var(--violet);
+    font: 22px Georgia, serif;
+}
+
+.mini-card p {
+    margin: 7px 0;
+    color: var(--groovy);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#skillList {
+    margin: 10px 0;
+}
+
+.skill {
+    display: inline-block;
+    margin: 4px;
+    padding: 7px 12px;
+    background: var(--pink);
+    color: var(--cream);
+    border: 2px solid var(--cream);
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 2px 2px var(--groovy);
+}
+
+.skill:hover {
+    background: var(--sky);
+    color: var(--violet);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--sky);
+    color: var(--violet);
+    border: 3px solid var(--cream);
+    border-radius: 15px;
+    outline: none;
+    font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--violet);
+}
+
+input:focus,
+textarea:focus {
+    background: var(--cream);
+    border-color: var(--pink);
+}
+
+button {
+    margin: 5px 3px;
+    padding: 10px 16px;
+    background: var(--pink);
+    color: var(--cream);
+    border: 3px solid var(--cream);
+    border-radius: 18px;
+    font: bold 15px Georgia, serif;
+    cursor: pointer;
+    box-shadow: 3px 3px var(--violet);
+    transition: .2s;
+}
+
+button:hover {
+    background: var(--sky);
+    color: var(--violet);
+    transform: translateY(-3px);
+}
+
+.contact-card {
+    margin-top: 25px;
+    padding: 25px;
+    background: var(--pink);
+    border: 4px dashed var(--cream);
+    border-radius: 25px;
+    box-shadow: 5px 5px var(--violet);
+}
+
+.contact-card h2 {
+    margin-top: 0;
+    color: var(--cream);
+    font: 30px Georgia, serif;
+    text-shadow: 2px 2px var(--violet);
+}
+
+label {
+    display: block;
+    margin: 12px 0 5px;
+    color: var(--cream);
+    font-weight: bold;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+.error {
+    display: none;
+    margin-top: 5px;
+    padding: 7px 10px;
+    background: var(--cream);
+    color: var(--violet);
+    border: 2px solid var(--violet);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#successMessage {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    background: var(--sky);
+    color: var(--violet);
+    border: 3px solid var(--cream);
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.decoration {
+    margin-top: 20px;
+    color: var(--cream);
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 8px;
+}
+
+.footer-text {
+    margin-top: 10px;
+    color: var(--cream);
+    text-align: center;
+    font: bold 16px Georgia, serif;
+}
+
+@media (max-width: 700px) {
+    .profile-area {
+        grid-template-columns: 1fr;
+    }
+
+    .main-title {
+        font-size: 42px;
+    }
+
+    .avatar {
+        width: 160px;
+        height: 160px;
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 450px) {
+    .container {
+        padding: 15px;
+    }
+
+    .main-title {
+        font-size: 35px;
+    }
+
+    .tags {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

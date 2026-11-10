@@ -1,48 +1,39 @@
 
-// ===== 1. Mode gelap / terang =====
+// SEARCH PROJECT
 
-// Ambil tombol dari HTML berdasarkan id-nya
-const tombolTema = document.getElementById("tombol-tema");
+const searchInput = document.getElementById("searchInput");
+const projectCards = document.querySelectorAll(".project-card");
+const noResult = document.getElementById("noResult");
 
-// Saat tombol diklik, tambah/hapus class "gelap" pada <body>
-tombolTema.addEventListener("click", function () {
-    document.body.classList.toggle("gelap");
+searchInput.addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
+    let found = 0;
 
-    // Ubah tulisan tombol sesuai mode yang sedang aktif
-    if (document.body.classList.contains("gelap")) {
-        tombolTema.textContent = "Mode terang";
-    } else {
-        tombolTema.textContent = "Mode gelap";
-    }
-});
+    projectCards.forEach(function (card) {
+        const name = card.dataset.name.toLowerCase();
 
-// ===== 2. Pencarian proyek =====
-
-const kotakCari = document.getElementById("cari");
-const semuaKartu = document.querySelectorAll(".kartu");
-const pesanKosong = document.getElementById("pesan-kosong");
-
-// Dijalankan setiap kali pengguna mengetik di kotak pencarian
-kotakCari.addEventListener("input", function () {
-    const kataKunci = kotakCari.value.toLowerCase();
-    let adaYangCocok = false;
-
-    // Periksa kartu satu per satu
-    semuaKartu.forEach(function (kartu) {
-        const isiKartu = kartu.textContent.toLowerCase();
-
-        if (isiKartu.includes(kataKunci)) {
-            kartu.style.display = "block"; // tampilkan
-            adaYangCocok = true;
+        if (name.includes(keyword)) {
+            card.style.display = "flex";
+            found++;
         } else {
-            kartu.style.display = "none"; // sembunyikan
+            card.style.display = "none";
         }
     });
 
-    // Tampilkan pesan jika tidak ada kartu yang cocok
-    if (adaYangCocok) {
-        pesanKosong.style.display = "none";
+    noResult.style.display = found === 0 ? "block" : "none";
+});
+
+
+// DARK MODE
+
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        themeToggle.textContent = "Mode terang ☀";
     } else {
-        pesanKosong.style.display = "block";
+        themeToggle.textContent = "Mode gelap ☾";
     }
 });
